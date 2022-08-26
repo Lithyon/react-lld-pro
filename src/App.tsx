@@ -1,8 +1,8 @@
-import React from 'react';
-import Presentation from './presentation';
+import React from "react";
+import Presentation from "./presentation";
 
 function App() {
-    return (<Presentation/>);
+    return <Presentation />;
 }
 
 export default App;
