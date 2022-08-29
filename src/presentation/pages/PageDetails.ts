@@ -4,13 +4,13 @@ interface PageDetail {
 }
 
 interface PageDetails {
-    readonly home: PageDetail;
+    readonly demandeRappel: PageDetail;
 }
 
 const pageDetails: PageDetails = {
-    home: {
-        link: "/",
-        displayName: "home"
+    demandeRappel: {
+        link: "/demande-rappel",
+        displayName: "Demande de rappel"
     }
 };
 

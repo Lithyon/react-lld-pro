@@ -1,8 +1,8 @@
 import React from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import PageDetails from "./PageDetails";
-import Home from "./Home";
 import {Card, Col, Container, Row} from "macif-components";
+import DemandeRappel from "./DemandeRappel";
 
 export default function Pages() {
     return (
@@ -12,7 +12,7 @@ export default function Pages() {
                     <Card body>
                         <BrowserRouter>
                             <Routes>
-                                <Route path={PageDetails.home.link} element={<Home />} />
+                                <Route path={PageDetails.demandeRappel.link} element={<DemandeRappel />} />
                             </Routes>
                         </BrowserRouter>
                     </Card>
