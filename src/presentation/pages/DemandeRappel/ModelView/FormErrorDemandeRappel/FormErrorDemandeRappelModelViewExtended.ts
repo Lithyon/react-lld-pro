@@ -8,6 +8,7 @@ export interface FormErrorDemandeRappelModelViewExtended
 export function FormErrorDemandeRappelModelViewPrototype(): FormErrorDemandeRappelModelViewExtended {
     return {
         clone: FormErrorDemandeRappelModelViewPrototype,
-        prenom: this.prenom
+        prenom: this.prenom,
+        nom: this.nom
     };
 }

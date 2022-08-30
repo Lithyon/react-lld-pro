@@ -3,4 +3,5 @@ import FormErrorDemandeRappelModelView from "../FormErrorDemandeRappel/FormError
 export default interface DemandeRappelModelView {
     readonly formErrorDemandeRappel: FormErrorDemandeRappelModelView;
     readonly prenom: string;
+    readonly nom: string;
 }

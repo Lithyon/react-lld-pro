@@ -14,6 +14,10 @@ export default class DemandeRappelServiceImpl {
             formError.prenom = "Veuillez renseigner votre prénom";
         }
 
+        if (demandeRappel.nom.length === 0) {
+            formError.nom = "Veuillez renseigner votre nom";
+        }
+
         return formError;
     }
 

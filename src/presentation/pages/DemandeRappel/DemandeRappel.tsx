@@ -33,6 +33,15 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
                     errorMessage={state.formErrorDemandeRappel.prenom}
                 />
 
+                <Input
+                    id="nom"
+                    label="Nom"
+                    autoComplete="family-name"
+                    onChange={controller.onChangeNom}
+                    value={state.nom}
+                    errorMessage={state.formErrorDemandeRappel.nom}
+                />
+
                 <Button block variant="primary" onClick={handleValidationFormulaire}>
                     Demande de rappel
                 </Button>

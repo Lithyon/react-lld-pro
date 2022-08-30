@@ -9,6 +9,7 @@ export function DemandeRappelModelViewPrototype(): DemandeRappelModelViewExtende
     return {
         clone: DemandeRappelModelViewPrototype,
         formErrorDemandeRappel: this.formErrorDemandeRappel,
-        prenom: this.prenom
+        prenom: this.prenom,
+        nom: this.nom
     };
 }
