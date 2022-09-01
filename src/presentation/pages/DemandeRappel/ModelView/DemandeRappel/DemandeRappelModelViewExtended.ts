@@ -11,6 +11,7 @@ export function DemandeRappelModelViewPrototype(): DemandeRappelModelViewExtende
         formErrorDemandeRappel: this.formErrorDemandeRappel,
         prenom: this.prenom,
         nom: this.nom,
-        nomEntreprise: this.nomEntreprise
+        nomEntreprise: this.nomEntreprise,
+        telephone: this.telephone
     };
 }

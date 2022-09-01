@@ -5,4 +5,5 @@ export default interface DemandeRappelModelView {
     readonly prenom: string;
     readonly nom: string;
     readonly nomEntreprise: string;
+    readonly telephone: string;
 }

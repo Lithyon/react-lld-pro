@@ -9,12 +9,14 @@ describe("Demande de rappel - validation du formulaire", function () {
         controller.onChangePrenom("Bobby");
         controller.onChangeNom("Bobby");
         controller.onChangeNomEntreprise("Bobby");
+        controller.onChangeTelephone("0666666666");
 
         controller.subscribeOnStateChanged(() => {
             const actual = controller.state;
             expect(actual.formErrorDemandeRappel.prenom).toBe(expected);
             expect(actual.formErrorDemandeRappel.nom).toBe(expected);
             expect(actual.formErrorDemandeRappel.nomEntreprise).toBe(expected);
+            expect(actual.formErrorDemandeRappel.telephone).toBe(expected);
             done();
         });
 
@@ -57,6 +59,36 @@ describe("Demande de rappel - validation du formulaire", function () {
         controller.subscribeOnStateChanged(() => {
             const actual = controller.state;
             expect(actual.formErrorDemandeRappel.nomEntreprise).toBe(expected);
+            done();
+        });
+
+        controller.validationFormulaire();
+    });
+
+    it("doit retourner une erreur pour le champ nom téléphone - non renseigné", function (done) {
+        const expected = "Veuillez renseigner un numéro de téléphone";
+
+        const controller = init();
+
+        controller.subscribeOnStateChanged(() => {
+            const actual = controller.state;
+            expect(actual.formErrorDemandeRappel.telephone).toBe(expected);
+            done();
+        });
+
+        controller.validationFormulaire();
+    });
+
+    it("doit retourner une erreur pour le champ nom téléphone - invalide", function (done) {
+        const expected = "Veuillez saisir un numéro de téléphone valide";
+
+        const controller = init();
+
+        controller.onChangeTelephone("xxxx");
+
+        controller.subscribeOnStateChanged(() => {
+            const actual = controller.state;
+            expect(actual.formErrorDemandeRappel.telephone).toBe(expected);
             done();
         });
 

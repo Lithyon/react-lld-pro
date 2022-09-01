@@ -21,6 +21,7 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
         this.onChangePrenom = this.onChangePrenom.bind(this);
         this.onChangeNom = this.onChangeNom.bind(this);
         this.onChangeNomEntreprise = this.onChangeNomEntreprise.bind(this);
+        this.onChangeTelephone = this.onChangeTelephone.bind(this);
         this.validationFormulaire = this.validationFormulaire.bind(this);
 
         this._state = CloneableExtension<DemandeRappelModelView, DemandeRappelModelViewExtended>(
@@ -28,7 +29,8 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
                 formErrorDemandeRappel: FormErrorDemandeRappelModelViewBuilder.buildEmpty(),
                 prenom: "",
                 nom: "",
-                nomEntreprise: ""
+                nomEntreprise: "",
+                telephone: ""
             },
             DemandeRappelModelViewPrototype
         );
@@ -71,6 +73,19 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
             formErrorDemandeRappel: {
                 ...this._state.formErrorDemandeRappel,
                 nomEntreprise: ""
+            }
+        };
+
+        this.raiseStateChanged();
+    }
+
+    onChangeTelephone(telephone: string) {
+        this._state = {
+            ...this._state,
+            telephone,
+            formErrorDemandeRappel: {
+                ...this._state.formErrorDemandeRappel,
+                telephone: ""
             }
         };
 

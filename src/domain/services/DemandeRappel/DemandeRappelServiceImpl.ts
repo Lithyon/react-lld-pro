@@ -3,6 +3,11 @@ import FormErrorDemandeRappelModelView from "../../../presentation/pages/Demande
 import DemandeRappelModelView from "../../../presentation/pages/DemandeRappel/ModelView/DemandeRappel/DemandeRappelModelView";
 
 export default class DemandeRappelServiceImpl {
+    private static verifierTelephone(value: string): boolean {
+        const testRegex: RegExpMatchArray = value.match(/^0[1-9]{1}[0-9]{8}$/) || [];
+        return testRegex.length === 0;
+    }
+
     formHasError(formError: FormErrorDemandeRappelModelView): boolean {
         return Object.values(formError).filter((v: string) => v !== "").length !== 0;
     }
@@ -20,6 +25,12 @@ export default class DemandeRappelServiceImpl {
 
         if (demandeRappel.nomEntreprise.length === 0) {
             formError.nomEntreprise = "Veuillez saisir au minimum une lettre";
+        }
+
+        if (demandeRappel.telephone.length === 0) {
+            formError.telephone = "Veuillez renseigner un numéro de téléphone";
+        } else if (DemandeRappelServiceImpl.verifierTelephone(demandeRappel.telephone)) {
+            formError.telephone = "Veuillez saisir un numéro de téléphone valide";
         }
 
         return formError;

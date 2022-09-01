@@ -22,7 +22,9 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
             </a>
 
             <Form className="mcf-mt--10">
-                <h1>Demande de rappel</h1>
+                <h1>Informations de contact</h1>
+
+                <p className="mcf-mb--6 mcf-ml--1">Sauf mention contraire, tous les champs sont requis.</p>
 
                 <Input
                     id="prenom"
@@ -42,14 +44,25 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
                     errorMessage={state.formErrorDemandeRappel.nom}
                 />
 
-            	<Input
-              		id="nomEntreprise"
-                	label="Nom de la société"
+                <Input
+                    id="nomEntreprise"
+                    label="Nom de la société"
                     autoComplete="organization"
-                	onChange={controller.onChangeNomEntreprise}
-                	value={state.nomEntreprise}
-                	errorMessage={state.formErrorDemandeRappel.nomEntreprise}
-            	/>
+                    onChange={controller.onChangeNomEntreprise}
+                    value={state.nomEntreprise}
+                    errorMessage={state.formErrorDemandeRappel.nomEntreprise}
+                />
+
+                <Input
+                    type="tel"
+                    id="telephone"
+                    label="Téléphone"
+                    autoComplete="tel-national"
+                    onChange={controller.onChangeTelephone}
+                    value={state.telephone}
+                    maxLength={10}
+                    errorMessage={state.formErrorDemandeRappel.telephone}
+                />
 
                 <Button block variant="primary" onClick={handleValidationFormulaire}>
                     Demande de rappel

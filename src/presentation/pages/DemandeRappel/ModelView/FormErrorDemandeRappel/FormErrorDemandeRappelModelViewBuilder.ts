@@ -3,7 +3,8 @@ export default class FormErrorDemandeRappelModelViewBuilder {
         return {
             prenom: "",
             nom: "",
-            nomEntreprise: ""
+            nomEntreprise: "",
+            telephone: ""
         };
     }
 }
