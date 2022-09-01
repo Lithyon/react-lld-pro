@@ -18,6 +18,10 @@ export default class DemandeRappelServiceImpl {
             formError.nom = "Veuillez renseigner votre nom";
         }
 
+        if (demandeRappel.nomEntreprise.length === 0) {
+            formError.nomEntreprise = "Veuillez saisir au minimum une lettre";
+        }
+
         return formError;
     }
 

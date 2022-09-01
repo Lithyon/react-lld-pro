@@ -4,4 +4,5 @@ export default interface DemandeRappelModelView {
     readonly formErrorDemandeRappel: FormErrorDemandeRappelModelView;
     readonly prenom: string;
     readonly nom: string;
+    readonly nomEntreprise: string;
 }

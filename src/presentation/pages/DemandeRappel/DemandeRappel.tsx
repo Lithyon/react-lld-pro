@@ -42,6 +42,15 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
                     errorMessage={state.formErrorDemandeRappel.nom}
                 />
 
+            	<Input
+              		id="nomEntreprise"
+                	label="Nom de la société"
+                    autoComplete="organization"
+                	onChange={controller.onChangeNomEntreprise}
+                	value={state.nomEntreprise}
+                	errorMessage={state.formErrorDemandeRappel.nomEntreprise}
+            	/>
+
                 <Button block variant="primary" onClick={handleValidationFormulaire}>
                     Demande de rappel
                 </Button>

@@ -9,6 +9,7 @@ export function FormErrorDemandeRappelModelViewPrototype(): FormErrorDemandeRapp
     return {
         clone: FormErrorDemandeRappelModelViewPrototype,
         prenom: this.prenom,
-        nom: this.nom
+        nom: this.nom,
+        nomEntreprise: this.nomEntreprise
     };
 }

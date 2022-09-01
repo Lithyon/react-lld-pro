@@ -10,6 +10,7 @@ export function DemandeRappelModelViewPrototype(): DemandeRappelModelViewExtende
         clone: DemandeRappelModelViewPrototype,
         formErrorDemandeRappel: this.formErrorDemandeRappel,
         prenom: this.prenom,
-        nom: this.nom
+        nom: this.nom,
+        nomEntreprise: this.nomEntreprise
     };
 }
