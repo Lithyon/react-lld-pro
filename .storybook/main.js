@@ -1,8 +1,5 @@
 module.exports = {
-    stories: [
-        "../src/presentation/components/**/*.stories.mdx",
-        "../src/presentation/components/**/*.stories.@(js|jsx|ts|tsx)"
-    ],
+    stories: ["../src/presentation/**/*.stories.mdx", "../src/presentation/**/*.stories.@(js|jsx|ts|tsx)"],
     addons: [
         "@storybook/addon-links",
         "@storybook/addon-essentials",
@@ -12,8 +9,5 @@ module.exports = {
     framework: "@storybook/react",
     core: {
         builder: "@storybook/builder-webpack5"
-    },
-    features: {
-        previewMdx2: true
     }
 };
