@@ -22,6 +22,8 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
         this.onChangeNomEntreprise = this.onChangeNomEntreprise.bind(this);
         this.onChangeTelephone = this.onChangeTelephone.bind(this);
         this.demandeRappel = this.demandeRappel.bind(this);
+        this.onAfficherModaleConfirmationOk = this.onAfficherModaleConfirmationOk.bind(this);
+        this.onAfficherModaleConfirmationKo = this.onAfficherModaleConfirmationKo.bind(this);
 
         this._state = CloneableExtension<DemandeRappelModelView, DemandeRappelModelViewExtended>(
             {
@@ -29,7 +31,9 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
                 prenom: "",
                 nom: "",
                 nomEntreprise: "",
-                telephone: ""
+                telephone: "",
+                afficherModaleConfirmationOk: false,
+                afficherModaleConfirmationKo: false
             },
             DemandeRappelModelViewPrototype
         );
@@ -96,12 +100,32 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
             const formErrorDemandeRappel = await this.dependencies.demandeRappelService.demandeRappel(this._state);
             this._state = {
                 ...this._state,
+                afficherModaleConfirmationOk:
+                    !this.dependencies.demandeRappelService.formHasError(formErrorDemandeRappel),
                 formErrorDemandeRappel
             };
         } catch (e) {
-            //TODO gestion erreur
-            console.error(e);
+            this._state = {
+                ...this.state,
+                afficherModaleConfirmationKo: true
+            };
         }
+        this.raiseStateChanged();
+    }
+
+    onAfficherModaleConfirmationOk(afficherModaleConfirmationOk: boolean) {
+        this._state = {
+            ...this.state,
+            afficherModaleConfirmationOk
+        };
+        this.raiseStateChanged();
+    }
+
+    onAfficherModaleConfirmationKo(afficherModaleConfirmationKo: boolean) {
+        this._state = {
+            ...this.state,
+            afficherModaleConfirmationKo
+        };
         this.raiseStateChanged();
     }
 }

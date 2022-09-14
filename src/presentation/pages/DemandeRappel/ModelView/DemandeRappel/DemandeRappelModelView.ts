@@ -6,4 +6,6 @@ export default interface DemandeRappelModelView {
     readonly nom: string;
     readonly nomEntreprise: string;
     readonly telephone: string;
+    readonly afficherModaleConfirmationOk: boolean;
+    readonly afficherModaleConfirmationKo: boolean;
 }

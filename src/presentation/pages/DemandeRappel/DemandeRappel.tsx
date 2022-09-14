@@ -2,6 +2,8 @@ import useObserveState from "@maciffr/react-mvc/hooks/useObserveState";
 import {Button, Form} from "macif-components";
 import Input from "../../components/Input";
 import {DemandeRappelController} from "./DemandeRappelController";
+import {ModaleConfirmationOk} from "./ModaleConfirmation/ModaleConfirmationOk";
+import {ModaleConfirmationKo} from "./ModaleConfirmation/ModaleConfirmationKo";
 
 interface DemandeRappelProps {
     readonly controller: DemandeRappelController;
@@ -60,7 +62,6 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
                     autoComplete="tel-national"
                     onChange={controller.onChangeTelephone}
                     value={state.telephone}
-                    maxLength={10}
                     errorMessage={state.formErrorDemandeRappel.telephone}
                 />
 
@@ -73,6 +74,16 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
                     Envoyer ma demande de rappel
                 </Button>
             </Form>
+
+            <ModaleConfirmationOk
+                afficherModaleConfirmationOk={state.afficherModaleConfirmationOk}
+                onAfficherModaleConfirmationOk={controller.onAfficherModaleConfirmationOk}
+            />
+
+            <ModaleConfirmationKo
+                afficherModaleConfirmationKo={state.afficherModaleConfirmationKo}
+                onAfficherModaleConfirmationKo={controller.onAfficherModaleConfirmationKo}
+            />
         </>
     );
 }
