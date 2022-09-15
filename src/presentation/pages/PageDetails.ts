@@ -9,7 +9,7 @@ interface PageDetails {
 
 const pageDetails: PageDetails = {
     demandeRappel: {
-        link: "/demande-rappel",
+        link: "/",
         displayName: "Demande de rappel"
     }
 };

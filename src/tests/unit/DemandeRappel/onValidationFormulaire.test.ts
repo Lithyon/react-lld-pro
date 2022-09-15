@@ -20,7 +20,7 @@ describe("Demande de rappel - validation du formulaire", function () {
             done();
         });
 
-        controller.validationFormulaire();
+        controller.demandeRappel();
     });
 
     it("doit retourner une erreur pour le champ prénom", function (done) {
@@ -34,7 +34,7 @@ describe("Demande de rappel - validation du formulaire", function () {
             done();
         });
 
-        controller.validationFormulaire();
+        controller.demandeRappel();
     });
 
     it("doit retourner une erreur pour le champ nom", function (done) {
@@ -48,7 +48,7 @@ describe("Demande de rappel - validation du formulaire", function () {
             done();
         });
 
-        controller.validationFormulaire();
+        controller.demandeRappel();
     });
 
     it("doit retourner une erreur pour le champ nom entreprise", function (done) {
@@ -62,7 +62,7 @@ describe("Demande de rappel - validation du formulaire", function () {
             done();
         });
 
-        controller.validationFormulaire();
+        controller.demandeRappel();
     });
 
     it("doit retourner une erreur pour le champ nom téléphone - non renseigné", function (done) {
@@ -76,7 +76,7 @@ describe("Demande de rappel - validation du formulaire", function () {
             done();
         });
 
-        controller.validationFormulaire();
+        controller.demandeRappel();
     });
 
     it("doit retourner une erreur pour le champ nom téléphone - invalide", function (done) {
@@ -92,6 +92,6 @@ describe("Demande de rappel - validation du formulaire", function () {
             done();
         });
 
-        controller.validationFormulaire();
+        controller.demandeRappel();
     });
 });

@@ -11,7 +11,7 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
     const state = useObserveState(controller);
 
     function handleValidationFormulaire() {
-        controller.validationFormulaire();
+        controller.demandeRappel();
     }
 
     return (
@@ -64,8 +64,13 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
                     errorMessage={state.formErrorDemandeRappel.telephone}
                 />
 
-                <Button block variant="primary" onClick={handleValidationFormulaire}>
-                    Demande de rappel
+                <Button
+                    variant="primary"
+                    onClick={handleValidationFormulaire}
+                    data-track-analytics="LLD_Pro_WCB_Envoyer"
+                    className="mcf-w--100 mcf-w-lg--auto"
+                >
+                    Envoyer ma demande de rappel
                 </Button>
             </Form>
         </>

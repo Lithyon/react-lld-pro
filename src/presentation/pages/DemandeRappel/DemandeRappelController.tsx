@@ -17,12 +17,11 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
 
     constructor(readonly dependencies: DemandeRappelControllerDependencies) {
         super();
-
         this.onChangePrenom = this.onChangePrenom.bind(this);
         this.onChangeNom = this.onChangeNom.bind(this);
         this.onChangeNomEntreprise = this.onChangeNomEntreprise.bind(this);
         this.onChangeTelephone = this.onChangeTelephone.bind(this);
-        this.validationFormulaire = this.validationFormulaire.bind(this);
+        this.demandeRappel = this.demandeRappel.bind(this);
 
         this._state = CloneableExtension<DemandeRappelModelView, DemandeRappelModelViewExtended>(
             {
@@ -92,14 +91,17 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
         this.raiseStateChanged();
     }
 
-    validationFormulaire() {
-        const formErrorDemandeRappel = this.dependencies.demandeRappelService.validationFormulaire(this._state);
-
-        this._state = {
-            ...this._state,
-            formErrorDemandeRappel
-        };
-
+    async demandeRappel() {
+        try {
+            const formErrorDemandeRappel = await this.dependencies.demandeRappelService.demandeRappel(this._state);
+            this._state = {
+                ...this._state,
+                formErrorDemandeRappel
+            };
+        } catch (e) {
+            //TODO gestion erreur
+            console.error(e);
+        }
         this.raiseStateChanged();
     }
 }
