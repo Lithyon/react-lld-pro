@@ -7,6 +7,8 @@ import {
 } from "./ModelView/DemandeRappel/DemandeRappelModelViewExtended";
 import FormErrorDemandeRappelModelViewBuilder from "./ModelView/FormErrorDemandeRappel/FormErrorDemandeRappelModelViewBuilder";
 import {DemandeRappelServiceImpl} from "../../../domain/services/DemandeRappel";
+import CiviliteModelView from "./ModelView/Civilite/CiviliteModelView";
+import CiviliteModelViewBuilder from "./ModelView/Civilite/CiviliteModelViewBuilder";
 import DemandeRappelController from "./DemandeRappelController";
 
 interface DemandeRappelControllerDependencies {
@@ -29,6 +31,7 @@ export class DemandeRappelControllerImpl
         this.onAfficherModaleConfirmationOk = this.onAfficherModaleConfirmationOk.bind(this);
         this.onAfficherModaleConfirmationKo = this.onAfficherModaleConfirmationKo.bind(this);
         this.redirect = this.redirect.bind(this);
+        this.onChangeCivilite = this.onChangeCivilite.bind(this);
 
         this._state = CloneableExtension<DemandeRappelModelView, DemandeRappelModelViewExtended>(
             {
@@ -38,7 +41,8 @@ export class DemandeRappelControllerImpl
                 nomEntreprise: "",
                 telephone: "",
                 afficherModaleConfirmationOk: false,
-                afficherModaleConfirmationKo: false
+                afficherModaleConfirmationKo: false,
+                civilite: CiviliteModelViewBuilder.buildEmpty()
             },
             DemandeRappelModelViewPrototype
         );
@@ -94,6 +98,19 @@ export class DemandeRappelControllerImpl
             formErrorDemandeRappel: {
                 ...this._state.formErrorDemandeRappel,
                 telephone: ""
+            }
+        };
+
+        this.raiseStateChanged();
+    }
+
+    onChangeCivilite(civilite: CiviliteModelView) {
+        this._state = {
+            ...this._state,
+            civilite,
+            formErrorDemandeRappel: {
+                ...this._state.formErrorDemandeRappel,
+                civilite: ""
             }
         };
 

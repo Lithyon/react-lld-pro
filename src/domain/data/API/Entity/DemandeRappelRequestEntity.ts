@@ -1,11 +1,12 @@
-import ParametreDemandeEntity from "./ParametreDemandeEntity";
+import ParametresDemandeEntity from "./ParametresDemandeEntity";
+import CoordonneeContactEntity from "./CoordonneeContactEntity";
 
 export default interface DemandeRappelRequestEntity {
     readonly cdCanal: string;
     readonly typeDemande: string;
     readonly nmPers: string;
     readonly znPrenPers: string;
-    readonly parametreDemande: ParametreDemandeEntity;
-    readonly cdTyContact: string;
-    readonly znInfosContact: string;
+    readonly parametresDemande: ParametresDemandeEntity;
+    readonly coordonneesContact: Array<CoordonneeContactEntity>;
+    readonly cdCivil: string;
 }

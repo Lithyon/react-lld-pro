@@ -14,6 +14,7 @@ export function DemandeRappelModelViewPrototype(): DemandeRappelModelViewExtende
         nomEntreprise: this.nomEntreprise,
         telephone: this.telephone,
         afficherModaleConfirmationOk: this.afficherModaleConfirmationOk,
-        afficherModaleConfirmationKo: this.afficherModaleConfirmationKo
+        afficherModaleConfirmationKo: this.afficherModaleConfirmationKo,
+        civilite: this.civilite
     };
 }

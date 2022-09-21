@@ -30,6 +30,10 @@ export default class DemandeRappelServiceImpl {
     validationFormulaire(demandeRappel: DemandeRappelModelView): FormErrorDemandeRappelModelView {
         const formError = FormErrorDemandeRappelModelViewBuilder.buildEmpty();
 
+        if (!demandeRappel.civilite.code) {
+            formError.civilite = "Veuillez renseigner votre civilité";
+        }
+
         if (demandeRappel.prenom.length === 0) {
             formError.prenom = "Veuillez renseigner votre prénom";
         }
@@ -57,15 +61,20 @@ export default class DemandeRappelServiceImpl {
         if (!this.formHasError(formError)) {
             const request = CloneableExtension<DemandeRappelRequestState, DemandeRappelRequestStateExtended>(
                 {
+                    cdCivil: demandeRappel.civilite.code,
                     cdCanal: CodeCanal.TELEPHONE,
                     typeDemande: CodeTypeDemande.OFFRE_LLD_PRO_MACIF_DIRECT_PRO,
                     nmPers: demandeRappel.nom,
                     znPrenPers: demandeRappel.prenom,
-                    parametreDemande: {
+                    parametresDemande: {
                         raisonSociale: demandeRappel.nomEntreprise
                     },
-                    cdTyContact: CodeTypeContact.TELEPHONE,
-                    znInfosContact: demandeRappel.telephone
+                    coordonneesContact: [
+                        {
+                            typeContact: CodeTypeContact.TELEPHONE,
+                            valeur: demandeRappel.telephone
+                        }
+                    ]
                 },
                 DemandeRappelRequestStatePrototype
             );

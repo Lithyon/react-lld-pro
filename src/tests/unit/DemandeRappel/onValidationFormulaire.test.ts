@@ -1,4 +1,5 @@
 import {init} from "./common/init";
+import {CiviliteCode} from "../../../domain/data/Enum/DefaultCivilite";
 
 describe("Demande de rappel - validation du formulaire", function () {
     it("ne doit pas retourner d'erreur", function (done) {
@@ -10,6 +11,7 @@ describe("Demande de rappel - validation du formulaire", function () {
         controller.onChangeNom("Bobby");
         controller.onChangeNomEntreprise("Bobby");
         controller.onChangeTelephone("0666666666");
+        controller.onChangeCivilite({code: CiviliteCode.MADAME, libelle: "Madame"});
 
         controller.subscribeOnStateChanged(() => {
             const actual = controller.state;
@@ -17,6 +19,7 @@ describe("Demande de rappel - validation du formulaire", function () {
             expect(actual.formErrorDemandeRappel.nom).toBe(expected);
             expect(actual.formErrorDemandeRappel.nomEntreprise).toBe(expected);
             expect(actual.formErrorDemandeRappel.telephone).toBe(expected);
+            expect(actual.formErrorDemandeRappel.civilite).toBe(expected);
             done();
         });
 
@@ -31,6 +34,20 @@ describe("Demande de rappel - validation du formulaire", function () {
         controller.subscribeOnStateChanged(() => {
             const actual = controller.state;
             expect(actual.formErrorDemandeRappel.prenom).toBe(expected);
+            done();
+        });
+
+        controller.demandeRappel();
+    });
+
+    it("doit retourner une erreur pour le champ civilité", function (done) {
+        const expected = "Veuillez renseigner votre civilité";
+
+        const controller = init();
+
+        controller.subscribeOnStateChanged(() => {
+            const actual = controller.state;
+            expect(actual.formErrorDemandeRappel.civilite).toBe(expected);
             done();
         });
 

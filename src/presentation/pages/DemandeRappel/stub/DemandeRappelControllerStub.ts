@@ -6,6 +6,7 @@ import {
 import CloneableExtension from "@maciffr/react-mvc/core/CloneableExtension";
 import DemandeRappelModelView from "../ModelView/DemandeRappel/DemandeRappelModelView";
 import DemandeRappelController from "../DemandeRappelController";
+import CiviliteModelView from "../ModelView/Civilite/CiviliteModelView";
 
 type action = () => void;
 
@@ -17,6 +18,7 @@ interface HandlerStubProperties {
     onChangeTelephone: action;
     onAfficherModaleConfirmationOk: action;
     onAfficherModaleConfirmationKo: action;
+    onChangeCivilite: action;
     redirect: action;
 }
 
@@ -35,7 +37,8 @@ export default class DemandeRappelControllerStub
             onChangeTelephone,
             onAfficherModaleConfirmationOk,
             onAfficherModaleConfirmationKo,
-            redirect
+            redirect,
+            onChangeCivilite
         }: HandlerStubProperties,
         stateStub: DemandeRappelModelView
     ) {
@@ -71,6 +74,8 @@ export default class DemandeRappelControllerStub
     onAfficherModaleConfirmationKo(afficherModaleConfirmationKo: boolean): void {}
 
     redirect(): void {}
+
+    onChangeCivilite(civilite: CiviliteModelView): void {}
 
     get state(): DemandeRappelModelViewExtended {
         return this._state.clone();

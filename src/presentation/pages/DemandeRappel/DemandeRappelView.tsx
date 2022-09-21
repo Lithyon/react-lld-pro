@@ -3,6 +3,8 @@ import {Button, Card, Col, Container, Form, ModalTitle, Row} from "macif-compone
 import Input from "../../components/Input";
 import ModaleConfirmation from "../../components/ModaleConfirmation/ModaleConfirmation";
 import DemandeRappelController from "./DemandeRappelController";
+import ChoiceSwitcher from "../../components/ChoiceSwitcher";
+import {DefaultCivilite} from "../../../domain/data/Enum/DefaultCivilite";
 
 interface DemandeRappelProps {
     readonly controller: DemandeRappelController;
@@ -27,6 +29,24 @@ export default function DemandeRappelView({controller}: DemandeRappelProps) {
                             <p className="mcf-mb--6 mcf-ml--1">Sauf mention contraire, tous les champs sont requis.</p>
 
                             <Input
+                                id="nomEntreprise"
+                                label="Nom de la société"
+                                autoComplete="organization"
+                                onChange={controller.onChangeNomEntreprise}
+                                value={state.nomEntreprise}
+                                errorMessage={state.formErrorDemandeRappel.nomEntreprise}
+                            />
+
+                            <ChoiceSwitcher
+                                onChoiceSelected={controller.onChangeCivilite}
+                                choiceSelected={state.civilite}
+                                dataSource={DefaultCivilite}
+                                label="Civilité"
+                                id="civilite"
+                                errorMessage={state.formErrorDemandeRappel.civilite}
+                            />
+
+                            <Input
                                 id="prenom"
                                 label="Prénom"
                                 autoComplete="given-name"
@@ -42,15 +62,6 @@ export default function DemandeRappelView({controller}: DemandeRappelProps) {
                                 onChange={controller.onChangeNom}
                                 value={state.nom}
                                 errorMessage={state.formErrorDemandeRappel.nom}
-                            />
-
-                            <Input
-                                id="nomEntreprise"
-                                label="Nom de la société"
-                                autoComplete="organization"
-                                onChange={controller.onChangeNomEntreprise}
-                                value={state.nomEntreprise}
-                                errorMessage={state.formErrorDemandeRappel.nomEntreprise}
                             />
 
                             <Input

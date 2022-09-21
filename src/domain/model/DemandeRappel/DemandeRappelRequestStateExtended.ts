@@ -12,8 +12,8 @@ export function DemandeRappelRequestStatePrototype(): DemandeRappelRequestStateE
         typeDemande: this.typeDemande,
         nmPers: this.nmPers,
         znPrenPers: this.znPrenPers,
-        parametreDemande: this.parametreDemande,
-        cdTyContact: this.cdTyContact,
-        znInfosContact: this.znInfosContact
+        parametresDemande: this.parametresDemande,
+        coordonneesContact: this.coordonneesContact,
+        cdCivil: this.cdCivil
     };
 }

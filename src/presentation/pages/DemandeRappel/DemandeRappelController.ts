@@ -1,5 +1,6 @@
 import {DemandeRappelModelViewExtended} from "./ModelView/DemandeRappel/DemandeRappelModelViewExtended";
 import StateObservable from "@maciffr/react-mvc/src/contracts/StateObservable";
+import CiviliteModelView from "./ModelView/Civilite/CiviliteModelView";
 
 export default interface DemandeRappelController extends StateObservable<DemandeRappelModelViewExtended> {
     demandeRappel(): void;
@@ -15,6 +16,8 @@ export default interface DemandeRappelController extends StateObservable<Demande
     onAfficherModaleConfirmationOk(afficherModaleConfirmationOk: boolean): void;
 
     onAfficherModaleConfirmationKo(afficherModaleConfirmationKo: boolean): void;
+
+    onChangeCivilite(civilite: CiviliteModelView): void;
 
     redirect(): void;
 }

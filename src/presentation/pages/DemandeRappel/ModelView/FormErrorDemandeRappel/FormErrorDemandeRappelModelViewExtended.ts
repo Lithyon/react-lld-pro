@@ -11,6 +11,7 @@ export function FormErrorDemandeRappelModelViewPrototype(): FormErrorDemandeRapp
         prenom: this.prenom,
         nom: this.nom,
         nomEntreprise: this.nomEntreprise,
-        telephone: this.telephone
+        telephone: this.telephone,
+        civilite: this.civilite
     };
 }

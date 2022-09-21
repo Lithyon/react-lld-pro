@@ -3,4 +3,5 @@ export default interface FormErrorDemandeRappelModelView {
     readonly nom: string;
     readonly nomEntreprise: string;
     readonly telephone: string;
+    readonly civilite: string;
 }
