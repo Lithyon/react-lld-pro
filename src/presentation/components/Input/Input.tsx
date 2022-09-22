@@ -36,16 +36,13 @@ export default function Input({
 
     return (
         <Form.Group controlId={id}>
-            <Form.Label as="h3" className="mcf-text--small-1 mcf-font--base mcf-font-weight--bold">
-                {label}
-            </Form.Label>
+            <Form.Label>{label}</Form.Label>
             {message && (
                 <Form.Text className="mcf-text--small-1" muted>
                     {message}
                 </Form.Text>
             )}
             <Form.Control
-                as="input"
                 type={type}
                 onChange={handleChangeValue}
                 value={inputValue}

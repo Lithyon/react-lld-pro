@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
+import Input from "../Input";
+
+<Meta
+  title="LLD-PRO/Components/Input"
+  component={Input}
+/>
+
+export const Template = (args) => <Input {...args} />;
+
+
+<Canvas>
+  <Story name="par défaut"
+         args={{
+           id: "test",
+           label: "Mon super label",
+           onChange: action("onChange"),
+           value: "",
+           message: "Message d'info complètement optionnel"
+         }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="error"
+         args={{
+           id: "test",
+           label: "Mon super label",
+           onChange: action("onChange"),
+           value: "",
+           message: "Message d'info complètement optionnel",
+           errorMessage: "Pas ouf l'erreur là"
+         }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
