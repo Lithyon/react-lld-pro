@@ -1,0 +1,48 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
+import ModaleConfirmation from "../ModaleConfirmation";
+import { ModalTitle } from "macif-components";
+
+<Meta
+  title="LLD-PRO/Components/Modale Confirmation"
+  component={ModaleConfirmation}
+/>
+
+export const Template = (args) => <ModaleConfirmation {...args} >
+  <span className="icon icon-macif-mobile-cercle-check icon-title mcf-text--success" aria-hidden={true} />
+  <ModalTitle>Votre demande a été envoyée</ModalTitle>
+  <p>Un conseiller va prendre contact avec vous prochainement. Nous vous remercions de votre confiance</p>
+</ModaleConfirmation>;
+
+
+<Canvas>
+  <Story name="OK"
+         args={{
+           show: true,
+           onHide: action("onHide"),
+           onExited: action("onExited")
+         }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+export const TemplateErreur = (args) => <ModaleConfirmation {...args} >
+  <span className="icon icon-macif-mobile-croix icon-title" aria-hidden={true} />
+  <ModalTitle>Une erreur est survenue</ModalTitle>
+  <p>
+    Nous sommes désolé, votre demande n’a pas pu être envoyée. Nous vous invitons à la réitérer
+    ultérieurement.
+  </p>
+</ModaleConfirmation>;
+
+
+<Canvas>
+  <Story name="KO"
+         args={{
+           show: true,
+           onHide: action("onHide"),
+           onExited: action("onExited")
+         }}>
+    {TemplateErreur.bind({})}
+  </Story>
+</Canvas>

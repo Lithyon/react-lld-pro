@@ -98,17 +98,26 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
     async demandeRappel() {
         try {
             const formErrorDemandeRappel = await this.dependencies.demandeRappelService.demandeRappel(this._state);
+
             this._state = {
                 ...this._state,
-                afficherModaleConfirmationOk:
-                    !this.dependencies.demandeRappelService.formHasError(formErrorDemandeRappel),
                 formErrorDemandeRappel
             };
+
+            if (!this.dependencies.demandeRappelService.formHasError(formErrorDemandeRappel)) {
+                this._state = {
+                    ...this._state,
+                    afficherModaleConfirmationOk: true
+                };
+                window.dataLayer?.push({event: "page_view", page_name: "LLD_Pro_WCB_Envoyer_OK"});
+            }
         } catch (e) {
             this._state = {
                 ...this.state,
                 afficherModaleConfirmationKo: true
             };
+
+            window.dataLayer?.push({event: "page_view", page_name: "LLD_Pro_WCB_Envoyer_KO"});
         }
         this.raiseStateChanged();
     }
@@ -127,5 +136,9 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
             afficherModaleConfirmationKo
         };
         this.raiseStateChanged();
+    }
+
+    redirect() {
+        window.location.replace("/assurance/professionnels-et-entreprises/lld-professionnel");
     }
 }

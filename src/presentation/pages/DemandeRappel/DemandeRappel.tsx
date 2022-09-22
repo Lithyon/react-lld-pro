@@ -1,9 +1,8 @@
 import useObserveState from "@maciffr/react-mvc/hooks/useObserveState";
-import {Button, Form} from "macif-components";
+import {Button, Form, ModalTitle} from "macif-components";
 import Input from "../../components/Input";
 import {DemandeRappelController} from "./DemandeRappelController";
-import {ModaleConfirmationOk} from "./ModaleConfirmation/ModaleConfirmationOk";
-import {ModaleConfirmationKo} from "./ModaleConfirmation/ModaleConfirmationKo";
+import ModaleConfirmation from "../../components/ModaleConfirmation/ModaleConfirmation";
 
 interface DemandeRappelProps {
     readonly controller: DemandeRappelController;
@@ -75,15 +74,28 @@ export default function DemandeRappel({controller}: DemandeRappelProps) {
                 </Button>
             </Form>
 
-            <ModaleConfirmationOk
-                afficherModaleConfirmationOk={state.afficherModaleConfirmationOk}
-                onAfficherModaleConfirmationOk={controller.onAfficherModaleConfirmationOk}
-            />
+            <ModaleConfirmation
+                show={state.afficherModaleConfirmationOk}
+                onHide={controller.onAfficherModaleConfirmationOk}
+                onExited={controller.redirect}
+            >
+                <span className="icon icon-macif-mobile-cercle-check icon-title mcf-text--success" aria-hidden={true} />
+                <ModalTitle>Votre demande a été envoyée</ModalTitle>
+                <p>Un conseiller va prendre contact avec vous prochainement. Nous vous remercions de votre confiance</p>
+            </ModaleConfirmation>
 
-            <ModaleConfirmationKo
-                afficherModaleConfirmationKo={state.afficherModaleConfirmationKo}
-                onAfficherModaleConfirmationKo={controller.onAfficherModaleConfirmationKo}
-            />
+            <ModaleConfirmation
+                show={state.afficherModaleConfirmationKo}
+                onHide={controller.onAfficherModaleConfirmationKo}
+                onExited={controller.redirect}
+            >
+                <span className="icon icon-macif-mobile-croix icon-title" aria-hidden={true} />
+                <ModalTitle>Une erreur est survenue</ModalTitle>
+                <p>
+                    Nous sommes désolé, votre demande n’a pas pu être envoyée. Nous vous invitons à la réitérer
+                    ultérieurement.
+                </p>
+            </ModaleConfirmation>
         </>
     );
 }
