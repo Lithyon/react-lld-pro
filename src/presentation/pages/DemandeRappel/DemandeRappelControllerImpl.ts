@@ -7,12 +7,16 @@ import {
 } from "./ModelView/DemandeRappel/DemandeRappelModelViewExtended";
 import FormErrorDemandeRappelModelViewBuilder from "./ModelView/FormErrorDemandeRappel/FormErrorDemandeRappelModelViewBuilder";
 import {DemandeRappelServiceImpl} from "../../../domain/services/DemandeRappel";
+import DemandeRappelController from "./DemandeRappelController";
 
 interface DemandeRappelControllerDependencies {
     readonly demandeRappelService: DemandeRappelServiceImpl;
 }
 
-export class DemandeRappelController extends ControllerBase<DemandeRappelModelViewExtended> {
+export class DemandeRappelControllerImpl
+    extends ControllerBase<DemandeRappelModelViewExtended>
+    implements DemandeRappelController
+{
     private _state: DemandeRappelModelViewExtended;
 
     constructor(readonly dependencies: DemandeRappelControllerDependencies) {
@@ -24,6 +28,7 @@ export class DemandeRappelController extends ControllerBase<DemandeRappelModelVi
         this.demandeRappel = this.demandeRappel.bind(this);
         this.onAfficherModaleConfirmationOk = this.onAfficherModaleConfirmationOk.bind(this);
         this.onAfficherModaleConfirmationKo = this.onAfficherModaleConfirmationKo.bind(this);
+        this.redirect = this.redirect.bind(this);
 
         this._state = CloneableExtension<DemandeRappelModelView, DemandeRappelModelViewExtended>(
             {

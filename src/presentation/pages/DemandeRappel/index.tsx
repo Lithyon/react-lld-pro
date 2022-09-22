@@ -1,10 +1,10 @@
 import React from "react";
-import {DemandeRappelController} from "./DemandeRappelController";
-import DemandeRappelView from "./DemandeRappel";
+import {DemandeRappelControllerImpl} from "./DemandeRappelControllerImpl";
+import DemandeRappelView from "./DemandeRappelView";
 import DemandeRappelService from "../../../domain/services/DemandeRappel";
 
 export default function DemandeRappel() {
-    const controller = new DemandeRappelController({
+    const controller = new DemandeRappelControllerImpl({
         demandeRappelService: DemandeRappelService
     });
 

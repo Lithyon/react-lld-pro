@@ -1,0 +1,121 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
+import DemandeRappelView from "../DemandeRappelView";
+import DemandeRappelControllerStub from "../stub/DemandeRappelControllerStub";
+import FormErrorDemandeRappelModelViewBuilder from "../ModelView/FormErrorDemandeRappel/FormErrorDemandeRappelModelViewBuilder";
+
+<Meta
+  title="LLD-PRO/Pages/DemandeRappel"
+  component={DemandeRappelView}
+/>
+
+export const Template = (args) => <DemandeRappelView {...args} />;
+
+<Canvas>
+  <Story name="par défaut"
+         args={{
+           controller: new DemandeRappelControllerStub({
+             demandeRappel: action("demandeRappel"),
+             onAfficherModaleConfirmationKo: action("onAfficherModaleConfirmationKo"),
+             redirect: action("redirect"),
+             onAfficherModaleConfirmationOk: action("onAfficherModaleConfirmationOk"),
+             onChangeNom: action("onChangeNom"),
+             onChangeNomEntreprise: action("onChangeNomEntreprise"),
+             onChangePrenom: action("onChangePrenom"),
+             onChangeTelephone: action("onChangeTelephone")
+           }, {
+             formErrorDemandeRappel: FormErrorDemandeRappelModelViewBuilder.buildEmpty(),
+             prenom: "",
+             nom: "",
+             nomEntreprise: "",
+             telephone: "",
+             afficherModaleConfirmationOk: false,
+             afficherModaleConfirmationKo: false
+           })
+         }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="erreur"
+         args={{
+           controller: new DemandeRappelControllerStub({
+             demandeRappel: action("demandeRappel"),
+             onAfficherModaleConfirmationKo: action("onAfficherModaleConfirmationKo"),
+             redirect: action("redirect"),
+             onAfficherModaleConfirmationOk: action("onAfficherModaleConfirmationOk"),
+             onChangeNom: action("onChangeNom"),
+             onChangeNomEntreprise: action("onChangeNomEntreprise"),
+             onChangePrenom: action("onChangePrenom"),
+             onChangeTelephone: action("onChangeTelephone")
+           }, {
+             formErrorDemandeRappel: {
+               nom: "C'est pas bon",
+               nomEntreprise: "Là non plus",
+               prenom: "Essaie encore",
+               telephone: "Game Over..."
+             },
+             prenom: "",
+             nom: "",
+             nomEntreprise: "",
+             telephone: "",
+             afficherModaleConfirmationOk: false,
+             afficherModaleConfirmationKo: false
+           })
+         }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="success"
+         args={{
+           controller: new DemandeRappelControllerStub({
+             demandeRappel: action("demandeRappel"),
+             onAfficherModaleConfirmationKo: action("onAfficherModaleConfirmationKo"),
+             redirect: action("redirect"),
+             onAfficherModaleConfirmationOk: action("onAfficherModaleConfirmationOk"),
+             onChangeNom: action("onChangeNom"),
+             onChangeNomEntreprise: action("onChangeNomEntreprise"),
+             onChangePrenom: action("onChangePrenom"),
+             onChangeTelephone: action("onChangeTelephone")
+           }, {
+             formErrorDemandeRappel: FormErrorDemandeRappelModelViewBuilder.buildEmpty(),
+             prenom: "",
+             nom: "",
+             nomEntreprise: "",
+             telephone: "",
+             afficherModaleConfirmationOk: true,
+             afficherModaleConfirmationKo: false
+           })
+         }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="echec"
+         args={{
+           controller: new DemandeRappelControllerStub({
+             demandeRappel: action("demandeRappel"),
+             onAfficherModaleConfirmationKo: action("onAfficherModaleConfirmationKo"),
+             redirect: action("redirect"),
+             onAfficherModaleConfirmationOk: action("onAfficherModaleConfirmationOk"),
+             onChangeNom: action("onChangeNom"),
+             onChangeNomEntreprise: action("onChangeNomEntreprise"),
+             onChangePrenom: action("onChangePrenom"),
+             onChangeTelephone: action("onChangeTelephone")
+           }, {
+             formErrorDemandeRappel: FormErrorDemandeRappelModelViewBuilder.buildEmpty(),
+             prenom: "",
+             nom: "",
+             nomEntreprise: "",
+             telephone: "",
+             afficherModaleConfirmationOk: false,
+             afficherModaleConfirmationKo: true
+           })
+         }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
