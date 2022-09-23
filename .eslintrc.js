@@ -21,5 +21,13 @@ module.exports = {
                 extendDefaults: true
             }
         ]
-    }
+    },
+    overrides: [
+        {
+            files: ["**/*.stories.*"],
+            rules: {
+                "import/no-anonymous-default-export": "off"
+            }
+        }
+    ]
 };
