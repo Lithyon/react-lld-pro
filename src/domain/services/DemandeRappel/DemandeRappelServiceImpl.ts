@@ -71,7 +71,7 @@ export default class DemandeRappelServiceImpl {
                     },
                     coordonneesContact: [
                         {
-                            typeContact: CodeTypeContact.TELEPHONE,
+                            typeContact: CodeTypeContact.TELEPHONE_PRO,
                             valeur: demandeRappel.telephone
                         }
                     ]

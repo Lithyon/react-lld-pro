@@ -1,3 +1,3 @@
 export enum CodeTypeContact {
-    TELEPHONE = "TEL"
+    TELEPHONE_PRO = "TEL_PRO"
 }
